@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title><%=htmlWebpackPlugin.options.title || 'MY REACT DEMO'%></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <% if (htmlWebpackPlugin.files.favicon) { %>
+    <link rel="shortcut icon" href="<%=htmlWebpackPlugin.files.favicon%>">
+    <% } %>
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+			// IE9 fix
+			if(!window.console) {
+				var console = {
+					log : function(){},
+					warn : function(){},
+					error : function(){},
+					time : function(){},
+					timeEnd : function(){}
+				}
+			}
+		</script>
+  </body>
+</html>
