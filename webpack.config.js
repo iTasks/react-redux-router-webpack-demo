@@ -1,4 +1,3 @@
-    vendors: ['react','react-dom','redux','react-redux']
 var Webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
