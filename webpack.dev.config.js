@@ -7,18 +7,12 @@ const baseConfig = require('./webpack.config.js');
 
 
 var config = merge(baseConfig,{
+    mode: 'development',
     devtool: 'eval-source-map',
     entry: {
         index: [
-            path.resolve(appPath, 'index.js'),
             hotMiddlewareScript
-        ],
-        vendors: ['react', 'react-dom', 'redux', 'react-redux']
-    },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/dist/'
+        ]
     },
     module: {
         rules: [{
@@ -37,13 +31,12 @@ var config = merge(baseConfig,{
         new Webpack.LoaderOptionsPlugin({
             debug: true
         }),
-        new Webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('development')
-            },
-            '__DEVTOOLS__': false
-        }),
-        new Webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'vendors.js'}),
+        // new Webpack.DefinePlugin({
+        //     'process.env': {
+        //         'NODE_ENV': JSON.stringify('development')
+        //     },
+        //     '__DEVTOOLS__': false
+        // }),
         new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NoEmitOnErrorsPlugin()
     ]

@@ -1,21 +1,20 @@
-var Webpack = require('webpack');
 var path = require('path');
 var appPath = path.resolve(__dirname, 'src');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
 
 var config = {
     context: __dirname,
-    // entry: {
-    //     index: [
-    //         path.resolve(appPath, 'index.js'),
-    //     ],
-    //     vendors: ['react', 'react-dom', 'redux', 'react-redux']
-    // },
-    // output: {
-    //     path: path.resolve(__dirname, 'dist'),
-    //     filename: 'bundle.js',
-    // },
+    entry: {
+        index: [
+            path.resolve(appPath, 'index.js')
+        ],
+        vendors: ['react', 'react-dom', 'redux', 'react-redux']
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/dist/'
+    },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
@@ -70,6 +69,18 @@ var config = {
     },
     externals: {
         "jquery": "jQuery"
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    filename: "vendors.js",
+                    chunks: "all"
+                }
+            }
+        }
     }
 };
 

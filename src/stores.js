@@ -38,8 +38,6 @@ const persistConfig = {
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-
-
 export default function configureStore(onComplete: () => void) {
     const store = createAppStore(reducers);
     persistStore(store, null, onComplete);
