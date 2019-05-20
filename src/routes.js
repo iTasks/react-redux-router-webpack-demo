@@ -1,4 +1,4 @@
-'use strict';
+
 import React, {
     Component
 } from 'react';
@@ -14,7 +14,7 @@ import {
     Router,
 } from 'react-router';
 import {
-  browserHistory,
+    browserHistory,
 } from 'react-router';
 export default function Routes() {
 

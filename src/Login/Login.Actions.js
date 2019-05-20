@@ -1,18 +1,18 @@
-'use strict';
+
 import actionTypes from './Login.Constants';
 // import {
 //     Toast
 // } from 'native-base';
 
 // fake user data
-let testUser = {
+const testUser = {
     'name': 'juju',
     'age': '24',
     'avatar': 'https://avatars1.githubusercontent.com/u/1439939?v=3&s=460'
 };
 
 // for skip user 
-let skipUser = {
+const skipUser = {
     'name': 'guest',
     'age': 20,
     'avatar': 'https://avatars1.githubusercontent.com/u/1439939?v=3&s=460',
@@ -25,16 +25,16 @@ export function logIn(opt, callBack) {
             'type': actionTypes.LOGGED_DOING
         });
         setTimeout(function() {
-            let inner_get = fetch('https://github.com/', {
-                    mode: 'no-cors'
-                })
+            const inner_get = fetch('https://github.com/', {
+                mode: 'no-cors'
+            })
                 .then((res) => {
                     dispatch({
                         'type': actionTypes.LOGGED_IN,
                         user: testUser
                     });
                     if (typeof callBack === 'function')
-                        callBack();
+                    {callBack();}
                 }).catch((err) => {
                     dispatch({
                         'type': actionTypes.LOGGED_ERROR,

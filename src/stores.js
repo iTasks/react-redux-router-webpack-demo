@@ -1,47 +1,47 @@
-'use strict';
+//@flow
 
 
 import thunk from 'redux-thunk';
 import {
-	createStore,
-	applyMiddleware,
-	compose
+    createStore,
+    applyMiddleware,
+    compose
 } from 'redux';
 import {
-	PersistGate
+    PersistGate
 } from 'redux-persist/lib/integration/react';
 import {
-	persistStore,
-	persistReducer
+    persistStore,
+    persistReducer
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducers from './reducers';
 
 const logger = store => next => action => {
-	if (typeof action === 'function') console.log('dispatching a function');
-	else console.log('dispatching', action);
-	let result = next(action);
-	console.log('next state', store.getState());
-	return result;
+    if (typeof action === 'function') {console.log('dispatching a function');}
+    else {console.log('dispatching', action);}
+    const result = next(action);
+    console.log('next state', store.getState());
+    return result;
 }
 
-let middlewares = [
-	logger,
-	thunk
+const middlewares = [
+    logger,
+    thunk
 ];
 
-let createAppStore = applyMiddleware(...middlewares)(createStore);
+const createAppStore = applyMiddleware(...middlewares)(createStore);
 const persistConfig = {
-	key: 'root',
-	storage: storage,
-	transform: [],
+    key: 'root',
+    storage: storage,
+    transform: [],
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 
 
 export default function configureStore(onComplete: () => void) {
-	const store = createAppStore(reducers);
-	persistStore(store, null, onComplete);
-	return store;
+    const store = createAppStore(reducers);
+    persistStore(store, null, onComplete);
+    return store;
 }

@@ -1,18 +1,18 @@
 import actionTypes from './Root.Constants'
 const initialState = {
-  routerKey: "login",
+    routerKey: "login",
 };
 
 
 export default function reducer(state = initialState, action) {
 
-  switch (action.type) {
+    switch (action.type) {
     case actionTypes.TO_ROUTER:
-      return { ...state,
-        routerKey: action.value
-      };
+        return { ...state,
+            routerKey: action.value
+        };
 
     default:
-      return state
-  }
+        return state
+    }
 }

@@ -1,4 +1,4 @@
-'use strict';
+
 import actionTypes from './Login.Constants';
 import { AlertIOS } from 'react-native';
 import {

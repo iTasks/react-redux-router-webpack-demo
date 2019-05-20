@@ -1,4 +1,4 @@
-'use strict';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/style.css';
 import React from 'react';
@@ -9,7 +9,7 @@ import {
 import configureStore from './stores';
 import Root from './routes';
 
-let store = configureStore(() => {
+const store = configureStore(() => {
     console.log("loading...");
 });
 
