@@ -1,15 +1,9 @@
 //@flow
-
-
 import thunk from 'redux-thunk';
 import {
     createStore,
     applyMiddleware,
-    compose
 } from 'redux';
-import {
-    PersistGate
-} from 'redux-persist/lib/integration/react';
 import {
     persistStore,
     persistReducer

@@ -1,10 +1,6 @@
-
 import React, {
     Component
 } from 'react';
-import {
-    connect
-} from 'react-redux';
 import Login from './Login/Login.Container';
 import Home from './Home/Home.Container';
 import Root from './Root/Root.Container';
@@ -17,8 +13,6 @@ import {
     browserHistory,
 } from 'react-router';
 export default function Routes() {
-
-
     return (
         <Router history={browserHistory}>
             <Route path="/" component={Root}>
@@ -28,5 +22,4 @@ export default function Routes() {
             </Route>
         </Router>
     );
-
 }
