@@ -31,7 +31,7 @@ if (!isProduction) {
   });
 
 }else{
-  app.use('/dist', express.static('dist'));
+  app.use('/', express.static('dist'));
   console.log('======== you must do \'npm run build\' before using this config ==========');
 
   app.all('/react-demo/*', function (req, res) {

@@ -1,15 +1,11 @@
 import React, {
     Component
 } from 'react';
-import Routes from '../routes';
 import {
     Link
 } from 'react-router';
-import {
-    Nav,
-    NavItem
-} from 'react-bootstrap';
 import Loader from 'react-loader';
+
 const menu = [{
     path: "login",
     name: "Login"
@@ -17,7 +13,6 @@ const menu = [{
     path: "home",
     name: "Home"
 }
-
 ]
 
 export default class Root extends Component {
@@ -38,6 +33,8 @@ export default class Root extends Component {
 
 
     render() {
+        console.log(this.props.status);
+        console.log(this.props.status !== 'doing')
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -45,17 +42,14 @@ export default class Root extends Component {
                         <ul className="nav nav-sidebar">
                             {this.state.menu}
                         </ul>
-
-
                     </div>
                     <div className="col-sm-15 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                         {this.props.children}
                     </div>
-                    <Loader loaded={this.props.status !== 'doing'} length={20} radius={30} width={8} />
+                    <Loader loaded={this.props.status !== 'doing'} length={20} radius={30} width={8}/>
                 </div>
             </div>
         );
-
 
 
     }

@@ -31,12 +31,6 @@ var config = merge(baseConfig,{
         new Webpack.LoaderOptionsPlugin({
             debug: true
         }),
-        // new Webpack.DefinePlugin({
-        //     'process.env': {
-        //         'NODE_ENV': JSON.stringify('development')
-        //     },
-        //     '__DEVTOOLS__': false
-        // }),
         new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NoEmitOnErrorsPlugin()
     ]

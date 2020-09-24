@@ -1,8 +1,8 @@
-var path = require('path');
-var appPath = path.resolve(__dirname, 'src');
+const path = require('path');
+const appPath = path.resolve(__dirname, 'src');
+const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
-
-var config = {
+const config = {
     context: __dirname,
     entry: {
         index: [
@@ -13,7 +13,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/dist/'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -81,7 +81,26 @@ var config = {
                 }
             }
         }
-    }
+    },
+    plugins: [
+        new SWPrecacheWebpackPlugin({
+            cacheId: "react-demo",
+            filename: "service-worker.js",
+            navigateFallback: "/index.html",
+            staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+            runtimeCaching: [
+                {
+                    urlPattern: /\/media\//,
+                    handler: "networkFirst"
+                },
+                {
+                    urlPattern: /\/static\//,
+                    handler: "networkFirst"
+                }
+            ]
+        }),
+    ]
+
 };
 
 

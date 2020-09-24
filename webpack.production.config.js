@@ -17,7 +17,7 @@ var config = merge(baseConfig, {
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
                 use: "css-loader",
-                // publicPath: "/dist"
+                publicPath: "/"
             })
         }] // inline base64 URLs for <=8k images, direct URLs for the rest
     },
