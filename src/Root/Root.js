@@ -33,8 +33,6 @@ export default class Root extends Component {
 
 
     render() {
-        console.log(this.props.status);
-        console.log(this.props.status !== 'doing')
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -46,7 +44,7 @@ export default class Root extends Component {
                     <div className="col-sm-15 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                         {this.props.children}
                     </div>
-                    <Loader loaded={this.props.status !== 'doing'} length={20} radius={30} width={8}/>
+                    {this.props.status === 'doing' && <Loader length={20} radius={30} width={8}/>}
                 </div>
             </div>
         );
